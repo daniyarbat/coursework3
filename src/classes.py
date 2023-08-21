@@ -65,5 +65,16 @@ class Operation:
         '''
         return Operation._get_transaction_info(self.op_to)
 
+    def get_date(self):
+        '''
+        Получает дату
+        :return:Дата транзакции
+        '''
+        return self.op_date
 
-
+    def get_amount(self):
+        '''
+        Получает сумму пеервода
+        :return: сумма и валюта перевода
+        '''
+        return f'{self.op_amount} {self.op_currency}'
