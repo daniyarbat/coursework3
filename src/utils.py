@@ -9,7 +9,7 @@ file_path = os.path.join(current_directory, '..', 'data', 'operations.json')
 
 def get_data(file_path):
     '''
-
+    Получаем данные из файла
     :param file_path: имя json файла
     :return: возвращает список
     '''
@@ -39,6 +39,14 @@ def get_transaction_info(account:str):
         print(f'{" ".join(account_name)} {account_number[:4]} {account_number[4:6]}** **** {account_number[-4:]}')
     else:
         print(f'Счет **{account_number[-4:]}')
+
+def get_sorted_operations(operations:list):
+    '''
+    Создаем функцию сортировки
+    :param operations: список операций
+    :return: сортированный список
+    '''
+    return sorted(operations, key=lambda op: op.get_datetime)
 
 
 
