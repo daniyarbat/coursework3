@@ -36,5 +36,34 @@ class Operation:
         '''
         return self.op_descr
 
+    @staticmethod
+    def _get_transaction_info(account: str):
+        '''
+        Создаем маску для счетов
+        :param account: строка с замаскированным счетом
+        :return:
+        '''
+        account_list = account.split()
+        account_name = account_list[0:-1]
+        account_number = account_list[-1]
+        if len(account_number) == 16:
+            print(f'{" ".join(account_name)} {account_number[:4]} {account_number[4:6]}** **** {account_number[-4:]}')
+        else:
+            print(f'Счет **{account_number[-4:]}')
+
+    def get_from_operation(self):
+        '''
+        Получает данные исходящей транзакции
+        :return: Данные карты или счет
+        '''
+        return Operation._get_transaction_info(self.op_from)
+
+    def get_to_operation(self):
+        '''
+        Получает данные входящей транзакции
+        :return: Данные карты или счет
+        '''
+        return Operation._get_transaction_info(self.op_to)
+
 
 
