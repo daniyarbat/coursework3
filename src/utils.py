@@ -16,3 +16,29 @@ def get_data(file_path):
     with open(file_path, 'r', encoding='UTF-8') as file:
         data = json.load(file)
     return data
+
+def get_executed_operations(operations:list[dict]):
+    '''
+    Получаем список исполненных операций
+    :param operations: список словарей с транзакциями
+    :return: список элементов класса Operation
+    '''
+    operations = [op for op in operations if op and op['state'] == 'EXECUTED']
+    return operations
+
+def get_transaction_info(account:str):
+    '''
+    Создаем маску для счетов
+    :param account: строка с замаскированным счетом
+    :return:
+    '''
+    account_list = account.split()
+    account_name = account_list[0:-1]
+    account_number = account_list[-1]
+    if len(account_number) == 16:
+        print(f'{" ".join(account_name)} {account_number[:4]} {account_number[4:6]}** **** {account_number[-4:]}')
+    else:
+        print(f'Счет **{account_number[-4:]}')
+
+
+
