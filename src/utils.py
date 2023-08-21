@@ -20,7 +20,8 @@ def get_data(file_path):
         data = json.load(file)
     return data
 
-def get_executed_operations(operations:list[dict]):
+
+def get_executed_operations(operations: list[dict]):
     '''
     Получаем список исполненных операций
     :param operations: список словарей с транзакциями
@@ -39,10 +40,11 @@ def get_executed_operations(operations:list[dict]):
         for op in operations
     ]
 
-def get_sorted_operations(operations:list[Operation]):
+
+def get_sorted_operations(operations: list[Operation]):
     '''
     Создаем функцию сортировки
     :param operations: список операций
     :return: сортированный список
     '''
-    return sorted(operations, key=lambda op: op.get_datetime)
+    return sorted(operations, key=lambda op: op.get_date(), reverse=True)

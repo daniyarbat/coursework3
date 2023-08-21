@@ -56,6 +56,8 @@ class Operation:
         Получает данные исходящей транзакции
         :return: Данные карты или счет
         '''
+        if self.op_from is None:
+            return "Нет данных"
         return Operation._get_transaction_info(self.op_from)
 
     def get_to_operation(self):
@@ -63,8 +65,6 @@ class Operation:
         Получает данные входящей транзакции
         :return: Данные карты или счет
         '''
-        if self.op_from is None:
-            return "Нет данных"
         return Operation._get_transaction_info(self.op_to)
 
     def get_date(self):
